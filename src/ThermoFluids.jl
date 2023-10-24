@@ -3,4 +3,5 @@ module ThermoFluids
 using Pluto
 include("lookup.jl")
 export lookup
+export UnitfulAero
 end
