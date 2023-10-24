@@ -1,7 +1,7 @@
 name = "ThermoFluids"
 uuid = "37ca9b58-eb8e-4a54-8232-6afcfcfe2da6"
 authors = ["Robert Walters"]
-version = "1.0.0-DEV"
+version = "0.1.0"
 
 [compat]
 julia = "1"
