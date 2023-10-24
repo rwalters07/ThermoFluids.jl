@@ -18,10 +18,16 @@ module UnitfulAero; using Unitful;
 	@unit ton    "ton"   Ton         200u"btu/minute" 			false;
 end
 
+# ╔═╡ 40cb4a74-290f-4f71-bb78-1cf9fbfd8205
+waterPath = joinpath(@__DIR__, "water.csv")
+
+# ╔═╡ 22397a6f-3557-4e02-83ad-ef9f343121cd
+steamPath = joinpath(@__DIR__, "steam.csv")
+
 # ╔═╡ 6441ca04-91ad-47b4-96aa-f98010da0eee
 begin
 	fileName = "water.csv"; #fileName that has the air tables
-	water = CSV.File(fileName,header=6) |> DataFrame; #look for the named file in the same working directory as the pluto notebook, load it, and convert to a DataFrame
+	water = CSV.File(waterPath,header=6) |> DataFrame; #look for the named file in the same working directory as the pluto notebook, load it, and convert to a DataFrame
 	water.T .= (water.T.+273.15).*1u"K" .|>u"°C";
 	water.P .= (water.P).*1u"kPa" ;
 	water.vf .= water.vf*1u"m^3/kg";
@@ -37,7 +43,7 @@ end
 
 # ╔═╡ 056279ba-e0eb-49c1-8b03-63964762234a
 begin 
-	steam = CSV.File("steam.csv",header=1) |> DataFrame;
+	steam = CSV.File(steamPath,header=1) |> DataFrame;
 	steam.T .= (steam.T.+273.15).*1u"K" .|>u"°C";
 	steam.P .= (steam.P).*1u"kPa" ;
 	steam.v .= steam.v*1u"m^3/kg";
@@ -786,6 +792,8 @@ version = "17.4.0+0"
 # ╔═╡ Cell order:
 # ╠═47eaba90-6479-11ee-2550-0961cb8cfc9b
 # ╠═bcc57694-b77b-43eb-83d2-34eecc113a76
+# ╠═40cb4a74-290f-4f71-bb78-1cf9fbfd8205
+# ╠═22397a6f-3557-4e02-83ad-ef9f343121cd
 # ╠═6441ca04-91ad-47b4-96aa-f98010da0eee
 # ╠═056279ba-e0eb-49c1-8b03-63964762234a
 # ╠═b6faf781-a3af-4a04-9980-19e464fb2930
